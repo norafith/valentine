@@ -1,0 +1,140 @@
+:root {
+  --card-width: 400px;
+}
+
+body {
+  background-color: #dee2ff;
+  color: white;
+  font-family: "IBM Plex Sans";
+  font-size: 24px;
+  height: 100vh;
+  margin: 0;
+  text-align: center;
+  min-width: 500px;
+}
+
+.card-container {
+  display: inline-block;
+  width: var(--card-width);
+  height: var(--card-width);
+  position: relative;
+  transition: transform 1.5s linear;
+  margin-top: 15px;
+}
+
+.card-container.active {
+  transform: translateX(calc(var(--card-width) / 2));
+}
+
+.card {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: var(--card-width);
+  height: 600px;
+  border-top-right-radius: 50px;
+  border-bottom-right-radius: 50px;
+  padding: 25px;
+  box-sizing: border-box;
+  border: 1px solid white;
+}
+
+.front.card {
+  justify-content: space-around;
+  background-color: #8e9aaf;
+  transition: transform 1.5s linear;
+  z-index: 10;
+  cursor: pointer;
+}
+
+.front.card.active {
+  transform: translateX(calc(var(--card-width) - 2 * var(--card-width)))
+    rotateY(180deg);
+}
+
+.intro.text-block > h3 {
+  margin: 5px;
+}
+
+.important-text {
+  color: #feeafa;
+}
+
+.content.card {
+  justify-content: center;
+  background-color: #cbc0d3;
+  z-index: 5;
+}
+
+.card.internal-shadow {
+  box-shadow: inset 2px 0 0 white;
+}
+
+.intro.gif {
+  width: calc(var(--card-width) - 6px);
+  height: auto;
+  max-height: calc(var(--card-width) - 6px);
+}
+
+.heart {
+  width: calc(var(--card-width) - 50px);
+  height: calc(var(--card-width) - 50px);
+  animation: beat 1.2s infinite;
+}
+
+small.intro {
+  animation: flashing 1s infinite;
+}
+
+.hidden {
+  display: none;
+}
+
+.main-text {
+  transform: rotateY(180deg);
+}
+
+@keyframes beat {
+  0% {
+    transform: scale(0.8);
+  }
+  10% {
+    transform: scale(0.9);
+  }
+  35% {
+    transform: scale(0.8);
+  }
+  40% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0.8);
+  }
+}
+
+@keyframes flashing {
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@media screen and (max-width: 850px) {
+  :root {
+    --card-width: 300px;
+  }
+
+  .card {
+    height: 500px;
+  }
+}
+
+@media screen and (max-width: 625px) {
+  :root {
+    --card-width: 250px;
+  }
+
+  .card {
+    padding: 15px;
+  }
+}
